@@ -7,6 +7,8 @@ whitespace, and restrained gold accents.
 
 Built for the Propacity Frontend Developer assignment.
 
+**Live site:** https://murec-theta.vercel.app/
+
 ## Stack
 
 - [Next.js 16](https://nextjs.org/) (App Router, Turbopack)
@@ -15,14 +17,52 @@ Built for the Propacity Frontend Developer assignment.
 - [GSAP](https://gsap.com/) (ScrollTrigger, ScrollSmoother, SplitText) for scroll-driven motion
 - [Framer Motion](https://www.framer.com/motion/) for entrance/reveal animations
 
-## Getting Started
+## Prerequisites
+
+- [Node.js](https://nodejs.org/) 20 or later
+- npm (bundled with Node.js)
+
+## Installation & Running Locally
+
+1. **Clone or unzip the project**, then move into the folder:
+
+   ```bash
+   cd assignmnet
+   ```
+
+2. **Install dependencies:**
+
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server:**
+
+   ```bash
+   npm run dev
+   ```
+
+4. **Open the site:** visit [http://localhost:3000](http://localhost:3000) in your browser.
+
+   The dev server supports hot reload — edit any file under `app/` and the
+   browser updates automatically.
+
+## Production Build
+
+To build and run an optimized production build locally:
 
 ```bash
-npm install
-npm run dev
+npm run build
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Then open [http://localhost:3000](http://localhost:3000).
+
+## Other Commands
+
+```bash
+npm run lint   # Run ESLint
+```
 
 ## Project Structure
 
@@ -51,13 +91,6 @@ public/images/  Content assets sourced from murec.com
   murec.com's home page; the hero video was swapped for a static image to
   keep the initial page load light.
 
-## Build
-
-```bash
-npm run build
-npm start
-```
-
 ## Deployment
 
-Deployed on Vercel: https://assignmnet-chi.vercel.app
+Deployed on Vercel: https://murec-theta.vercel.app/

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Reveal from "./Reveal";
 import SplitHeading from "./SplitHeading";
 
@@ -30,14 +29,22 @@ export default function Philosophy() {
         </Reveal>
 
         <Reveal delay={0.15}>
-          <div className="relative flex aspect-square items-center justify-center overflow-hidden rounded-full border border-gold/30 bg-porcelain shadow-[0_0_60px_-15px_rgba(201,160,94,0.35)]">
-            <Image
-              src="/images/desingform.png"
-              alt="Design Forum International — IGBC certification partner"
-              width={220}
-              height={72}
-              className="object-contain"
-            />
+          <div className="relative flex aspect-square items-center justify-center overflow-hidden rounded-full border border-gold/30 bg-ink-2">
+            <svg
+              viewBox="0 0 100 100"
+              className="h-2/5 w-2/5 text-gold"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+            >
+              <circle cx="50" cy="50" r="42" strokeOpacity="0.4" />
+              <circle cx="50" cy="50" r="32" strokeOpacity="0.7" />
+              <path
+                d="M50 30c8 6 14 6 20 4-1 16-7 26-20 32-13-6-19-16-20-32 6 2 12 2 20-4Z"
+                strokeLinejoin="round"
+              />
+              <path d="M42 50l6 6 12-12" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
           </div>
         </Reveal>
       </div>
