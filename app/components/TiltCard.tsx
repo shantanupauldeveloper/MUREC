@@ -16,9 +16,11 @@ export default function TiltCard({
 
   useEffect(() => {
     if (!ref.current) return;
-    gsap.set(ref.current, { transformPerspective: 800 });
-    quickX.current = gsap.quickTo(ref.current, "rotateY", { duration: 0.6, ease: "power3.out" });
-    quickY.current = gsap.quickTo(ref.current, "rotateX", { duration: 0.6, ease: "power3.out" });
+    const ctx = gsap.context(() => {
+      quickX.current = gsap.quickTo(ref.current, "rotateY", { duration: 0.6, ease: "power3.out" });
+      quickY.current = gsap.quickTo(ref.current, "rotateX", { duration: 0.6, ease: "power3.out" });
+    }, ref);
+    return () => ctx.revert();
   }, []);
 
   const handleMove = (e: PointerEvent<HTMLDivElement>) => {
@@ -36,13 +38,15 @@ export default function TiltCard({
   };
 
   return (
-    <div
-      ref={ref}
-      onPointerMove={handleMove}
-      onPointerLeave={handleLeave}
-      className={className}
-    >
-      {children}
+    <div style={{ perspective: 800 }}>
+      <div
+        ref={ref}
+        onPointerMove={handleMove}
+        onPointerLeave={handleLeave}
+        className={className}
+      >
+        {children}
+      </div>
     </div>
   );
 }
