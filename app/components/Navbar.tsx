@@ -1,8 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 import MagneticButton from "./MagneticButton";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const LINKS = [
   { label: "Home", href: "#home" },
@@ -17,6 +23,7 @@ const LINKS = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const progressRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -25,15 +32,37 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useGSAP(() => {
+    gsap.to(progressRef.current, {
+      scaleX: 1,
+      ease: "none",
+      scrollTrigger: {
+        start: "top top",
+        end: "max",
+        scrub: 0.3,
+      },
+    });
+  }, []);
+
   return (
-    <header
+    <motion.header
+      initial={{ y: -32, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled ? "bg-ink/85 backdrop-blur-md border-b border-line" : "bg-transparent"
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 md:px-10">
-        <a href="#home" className="flex items-center gap-3">
-          <Image src="/images/murec.png" alt="MUREC" width={110} height={58} className="h-10 w-auto md:h-12" priority />
+        <a href="#home" className="group flex items-center gap-3">
+          <Image
+            src="/images/murec.png"
+            alt="MUREC"
+            width={110}
+            height={58}
+            className="h-10 w-auto transition-transform duration-500 ease-out group-hover:scale-105 group-hover:rotate-3 md:h-12"
+            priority
+          />
         </a>
 
         <nav className="hidden items-center gap-9 lg:flex">
@@ -74,18 +103,27 @@ export default function Navbar() {
         }`}
       >
         <nav className="flex flex-col gap-1 px-6 pb-8 pt-2">
-          {LINKS.map((l) => (
+          {LINKS.map((l, i) => (
             <a
               key={l.label}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="border-b border-line py-4 text-sm uppercase tracking-widest2 text-porcelain/80 transition-colors hover:text-gold"
+              style={{
+                transitionDelay: open ? `${i * 40}ms` : "0ms",
+              }}
+              className={`border-b border-line py-4 text-sm uppercase tracking-widest2 text-porcelain/80 transition-all duration-300 hover:text-gold ${
+                open ? "translate-x-0 opacity-100" : "-translate-x-3 opacity-0"
+              }`}
             >
               {l.label}
             </a>
           ))}
         </nav>
       </div>
-    </header>
+
+      <div className="h-[2px] w-full bg-line/60">
+        <div ref={progressRef} className="h-full w-full origin-left scale-x-0 bg-gold" />
+      </div>
+    </motion.header>
   );
 }
