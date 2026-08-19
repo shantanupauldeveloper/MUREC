@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import MagneticButton from "./MagneticButton";
 
 const LINKS = [
   { label: "Home", href: "#home" },
@@ -40,19 +41,21 @@ export default function Navbar() {
             <a
               key={l.label}
               href={l.href}
-              className="text-[11px] font-medium uppercase tracking-widest2 text-porcelain/70 transition-colors hover:text-gold"
+              className="group relative text-[11px] font-medium uppercase tracking-widest2 text-porcelain/70 transition-colors hover:text-gold"
             >
               {l.label}
+              <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-gold transition-transform duration-300 ease-out group-hover:scale-x-100" />
             </a>
           ))}
         </nav>
 
-        <a
+        <MagneticButton
           href="#contact"
-          className="hidden rounded-full border border-gold/60 px-6 py-2.5 text-[11px] font-medium uppercase tracking-widest2 text-gold transition-all hover:bg-gold hover:text-ink lg:inline-block"
+          strength={0.4}
+          className="hidden rounded-full border border-gold/60 px-6 py-2.5 text-[11px] font-medium uppercase tracking-widest2 text-gold transition-colors hover:bg-gold hover:text-ink lg:inline-block"
         >
           Explore
-        </a>
+        </MagneticButton>
 
         <button
           aria-label="Toggle menu"

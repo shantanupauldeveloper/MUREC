@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Reveal from "./Reveal";
 import SplitHeading from "./SplitHeading";
+import MagneticButton from "./MagneticButton";
 
 export default function ContactCta() {
   return (
@@ -26,12 +27,13 @@ export default function ContactCta() {
           <p className="mt-6 text-base font-light text-porcelain/60">
             Reach out and let&rsquo;s connect.
           </p>
-          <a
+          <MagneticButton
             href="mailto:info@murec.com"
-            className="mt-12 inline-flex h-16 items-center justify-center rounded-full border border-gold/60 px-10 text-[11px] font-medium uppercase tracking-widest2 text-gold transition-all duration-500 hover:bg-gold hover:text-ink"
+            strength={0.3}
+            className="mt-12 inline-flex h-16 items-center justify-center rounded-full border border-gold/60 px-10 text-[11px] font-medium uppercase tracking-widest2 text-gold transition-colors duration-500 hover:bg-gold hover:text-ink"
           >
             Contact Us
-          </a>
+          </MagneticButton>
         </Reveal>
       </div>
     </section>

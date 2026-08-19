@@ -6,6 +6,7 @@ export default function Legacy() {
     <section id="legacy" className="relative overflow-hidden bg-ink py-28 md:py-40">
       <span
         aria-hidden
+        data-speed="0.8"
         className="text-display pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 select-none text-[38vw] font-light leading-none text-porcelain/[0.03] sm:text-[26vw]"
       >
         78

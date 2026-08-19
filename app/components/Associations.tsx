@@ -30,12 +30,12 @@ export default function Associations() {
       </div>
 
       <Reveal delay={0.15} className="relative mt-16 md:mt-20">
-        <div className="marquee-mask overflow-hidden">
-          <div className="flex w-max animate-marquee gap-6 sm:gap-10">
+        <div className="marquee-mask group overflow-hidden">
+          <div className="flex w-max animate-marquee gap-6 group-hover:[animation-play-state:paused] sm:gap-10">
             {TRACK.map((logo, i) => (
               <div
                 key={`${logo.alt}-${i}`}
-                className="flex h-24 w-44 shrink-0 items-center justify-center rounded-sm border border-line bg-ink-2 sm:h-28 sm:w-56"
+                className="flex h-24 w-44 shrink-0 items-center justify-center rounded-sm border border-line bg-ink-2 grayscale transition-all duration-300 hover:scale-105 hover:border-gold/40 hover:grayscale-0 sm:h-28 sm:w-56"
               >
                 <Image
                   src={logo.src}

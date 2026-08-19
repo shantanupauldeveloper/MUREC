@@ -32,7 +32,17 @@ export default function Philosophy() {
           <div className="relative flex aspect-square items-center justify-center overflow-hidden rounded-full border border-gold/30 bg-ink-2">
             <svg
               viewBox="0 0 100 100"
-              className="h-2/5 w-2/5 text-gold"
+              className="absolute h-[85%] w-[85%] animate-spin-slow text-gold/30"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="0.6"
+              strokeDasharray="1 5"
+            >
+              <circle cx="50" cy="50" r="46" />
+            </svg>
+            <svg
+              viewBox="0 0 100 100"
+              className="relative h-2/5 w-2/5 text-gold"
               fill="none"
               stroke="currentColor"
               strokeWidth="1.5"
